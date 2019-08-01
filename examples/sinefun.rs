@@ -22,13 +22,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-use rack::unit::{Unit};
-use effects::sine;
-use effects::fout;
-use shared::processor::{Process, Blocks, Processor};
-use shared::connector::{Connector, Connection, EndPoint};
-use shared::block::{Buffer, Buffers, Connectors};
-use shared::buffer::{BUFFER_LEN};
+use audio_effects::prelude::*;
 use std::fs::File;
 
 static fname_fout0: &'static str = "sinefun.raw";
