@@ -102,7 +102,7 @@ impl Blocks for FOut {
 impl  Info for FOut {
     fn info(&self) -> &'static About {
         return &About {
-            name: "FOut File Output.",
+            name: "File Output",
             desc: "Writes input to a raw file."
         }
     }

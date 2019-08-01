@@ -55,8 +55,8 @@ pub trait Process: Info + Blocks {
 pub trait Blocks {
     fn output(&mut self, idx: usize) -> &mut Output;
     fn input(&mut self, idx: usize) -> &mut Input;
-    fn map_inputs(&mut self, f: &mut dyn FnMut(&mut Input) -> bool) -> bool { false }
-    fn map_outputs(&mut self, f: &mut dyn FnMut(&mut Output) -> bool) -> bool { false }
+    fn map_inputs(&mut self, _f: &mut dyn FnMut(&mut Input) -> bool) -> bool { false }
+    fn map_outputs(&mut self, _f: &mut dyn FnMut(&mut Output) -> bool) -> bool { false }
 }
 
 pub trait Info {
@@ -65,6 +65,24 @@ pub trait Info {
     fn output_info(&self, idx: usize) -> &'static About;
     fn num_inputs(&self) -> usize;
     fn num_outputs(&self) -> usize;
+    
+    fn map_input_info(&self, f: &mut dyn FnMut(&'static About) -> bool) -> bool { 
+        for i in 0..self.num_inputs() {
+            if !f(self.input_info(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    fn map_output_info(&self, f: &mut dyn FnMut(&'static About) -> bool) -> bool {
+        for i in 0..self.num_outputs() {
+            if !f(self.output_info(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 

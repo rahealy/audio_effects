@@ -122,12 +122,9 @@ pub trait Connectors {
 ///Make connection from self to specified buffer.
 ///
     fn connect(&mut self, con: Connection) -> Result<(),&'static str> {
-        println!("block.connect() con = {:?}", con);
-
         if let Connector::Unconnected = self.connectors()[con.from.conn] {
             self.connectors()[con.from.conn] = Connector::ConnectedUsing(con);
             self.inc_num_cons();
-            println!("num_cons = {}", self.num_cons());
             Ok(())
         } else {
             Err("block.connect(): End point is already connected.")

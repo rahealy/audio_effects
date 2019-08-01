@@ -136,12 +136,12 @@ impl Info for Sine {
 
             2 => & About {
                 name: "Scale",
-                desc: "Scale output by this amount."
+                desc: "Scale output"
             },
 
             3 => & About {
                 name: "Offset",
-                desc: "Add offset to scaled amount."
+                desc: "Add offset after output has been scaled"
             },
 
             _ => panic!("Index out of bounds.")

@@ -34,7 +34,7 @@ use shared::processor::{Processor};
 use shared::connector::{Connector, Connection, EndPoint};
 use shared::buffer::{Write};
 use std::collections::vec_deque::VecDeque;
-
+use std::ops::IndexMut;
 
 /**********************************************************************
  * get_refs()
@@ -110,12 +110,12 @@ pub struct Unit<'a> {
 
 impl <'a> Unit<'a> {
     fn print_proc_msg(&self, msg: &'static str, p_idx: usize) -> () {
-        println!(
-            "{} ({}) {}",
-            msg,
-            p_idx,
-            self.procs[p_idx].info().name
-        );
+//         println!(
+//             "{} ({}) {}",
+//             msg,
+//             p_idx,
+//             self.procs[p_idx].info().name
+//         );
     }
 
 ///
@@ -412,6 +412,23 @@ impl <'a> Unit<'a> {
         Ok(())
     }
 
+///
+/// Return number of processors in list.
+///
+    pub fn num_processors(&self) -> usize {
+        self.procs.len()
+    }
+
+///
+/// Access processor at position.
+///
+    pub fn processor(&mut self, idx: usize) -> &mut dyn Processor {
+        if let Some(x) = self.procs.get_mut(idx) {
+            *x
+        } else {
+            panic!("Index out of bounds.");
+        }
+    }
 
 ///
 ///Prepare the unit to process.
@@ -441,8 +458,6 @@ impl <'a> Unit<'a> {
             return Err("Unit::drain_and_stop(): Already stopped.");
         }
         
-        println!("Unit::drain_and_stop(): Draining the graph.");
-
         self.dispatch_backward();
 
         while !self.next.is_empty() {
