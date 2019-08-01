@@ -50,3 +50,4 @@ The code is layed out into four sub-crates:
 * Muti-threaded processing.
 * Cycle detection.
 * Prelude Competeness.
+* Determine if Box is available in no-std environment. If so replace indexes with Box.
