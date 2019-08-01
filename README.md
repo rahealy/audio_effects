@@ -34,10 +34,12 @@ Try: `./audio_effects$ cargo run --example sinefun`.
 
 ## Code Layout
 
-effects - Contains the implementations of the effects processors.
-examples - Self explanitory.
-rack - Contains the graph traversal code.
-shared - Contains code shared by rack, examples and effects.
+The code is layed out into four sub-crates:
+
+* effects - Contains the implementations of the effects processors.
+* examples - Self explanitory.
+* rack - Contains the graph traversal code.
+* shared - Contains code shared by rack, examples and effects.
 
 ## TODO 
 
