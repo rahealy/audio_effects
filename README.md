@@ -30,7 +30,7 @@ The library expects connections to form an acyclic graph. No cycle detection is 
 
 See ./audio_effects/examples/sinefun.rs for a reasonably complete example.
 
-Try: `./audio_effects$ cargo run --example sinefun`.
+Try: `./audio_effects$ cargo run --example sinefun`
 
 ## Code Layout
 
