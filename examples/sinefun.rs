@@ -71,7 +71,6 @@ fn main() {
     println!("");
 
     println!("***Initialization***");
-
     sine0.reset();
     sine1.reset();
     sine2.reset();
