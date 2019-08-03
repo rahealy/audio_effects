@@ -1,6 +1,8 @@
 pub use rack::unit::{Unit};
 pub use effects::sine;
 pub use effects::fout;
+pub use effects::pwm;
+pub use effects::saw;
 pub use shared::processor::{Process, Blocks, Processor};
 pub use shared::connector::{Connector, Connection, EndPoint};
 pub use shared::block::{Buffer, Buffers, Connectors};

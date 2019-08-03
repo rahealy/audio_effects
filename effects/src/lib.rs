@@ -24,6 +24,8 @@ SOFTWARE.
 
 pub mod fout;
 pub mod sine;
+pub mod pwm;
+pub mod saw;
 
 #[cfg(test)]
 mod tests {
